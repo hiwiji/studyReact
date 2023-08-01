@@ -18,7 +18,13 @@ function App() {
   // function 함수() {
   //   console.log(1);
   // }
- 
+
+  let [modal, setModal] = useState(false);
+  // 보통 변경함수는 set ~~~라고 써줌
+  // ui의 현재 상태를 state로 저장 (자료형이면 상관없음)
+  // Modal state가 false면 안보이게, true면 보이게
+
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -49,11 +55,30 @@ function App() {
         <p>2월 17일 발행</p>
       </div>
       <div className="list">
-        <h4>{ 글제목[2] }</h4> 
+        <h4 onClick={ () => {setModal(!modal) }}>{ 글제목[2] }</h4> 
         <p>2월 17일 발행</p>
       </div>
+        
+      {
+        modal == true ? <Modal></Modal> : null
+      }
+      
     </div>
   );
 }
+
+
+function Modal() {
+  return (
+    <div className="modal">
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+
+
+  )
+}
+
 
 export default App;
